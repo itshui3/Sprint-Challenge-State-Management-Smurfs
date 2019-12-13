@@ -4,7 +4,7 @@ import { Card, CardTitle, CardBody, CardImg } from 'reactstrap'
 // Redux
 import { connect } from 'react-redux'
 // Actions
-import { deleteVillager } from '../redux/actions'
+import { deleteVillager, editVillager, setForm, openPost } from '../redux/actions'
 
 function Villager(props) {
 
@@ -13,6 +13,12 @@ function Villager(props) {
 
   const handleDelete = ev => {
     props.deleteVillager(props.villager.id)
+  }
+
+  const handleEdit = ev => {
+    props.setForm(props.villager.id)
+    props.openPost()
+
   }
 
   return (
@@ -26,7 +32,7 @@ function Villager(props) {
       <CardBody>
         <p>{props.villager.age}</p>
         <p>{props.villager.height}</p>
-        <button>Modify</button>
+        <button onClick={handleEdit}>Modify</button>
         <button onClick={handleDelete}>Delete</button>
       </CardBody>
 
@@ -41,5 +47,8 @@ const mapStateToProps = ({ villageReducer }) => {
 }
 
 export default connect(mapStateToProps, {
-  deleteVillager
+  deleteVillager,
+  editVillager,
+  setForm,
+  openPost
 })(Villager)

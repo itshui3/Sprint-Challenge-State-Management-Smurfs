@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react'
 // Redux
 import { connect } from 'react-redux'
-import { openPost, postVillager } from '../redux/actions'
+import { openPost, postVillager, setForm, editVillager } from '../redux/actions'
 // Styles
 import './Form.scss'
 
@@ -23,20 +23,26 @@ function Form(props) {
       height: ''
     })
 
+    props.setForm('')
+
   }, [props.villagers])
 
   const closeModal = ev => {
     props.openPost()
+    
   }
   const handleTyping = ev => {
     setVillager({...villager, [ev.target.name]: ev.target.value })
   }
   const handleSubmit = ev => {
     ev.preventDefault()
-    if (villager.name && villager.age && villager.height) {
+
+    if (villager.name && villager.age && villager.height && props.formType === 'make') {
       props.postVillager(villager)
-    } else {
+    } else if (props.formType === 'make') {
       alert('error, fill out all the fields')
+    } else if (props.formType) {
+      props.editVillager(villager, props.formType)
     }
 
 
@@ -87,11 +93,14 @@ const mapStateToProps = ({ villageReducer }) => {
 
   return {
     isPostOpen: villageReducer.isPostOpen,
-    villagers: villageReducer.villagers
+    villagers: villageReducer.villagers,
+    formType: villageReducer.formType
   }
 }
 
 export default connect(mapStateToProps, {
   openPost,
-  postVillager
+  postVillager,
+  setForm,
+  editVillager
 })(Form)

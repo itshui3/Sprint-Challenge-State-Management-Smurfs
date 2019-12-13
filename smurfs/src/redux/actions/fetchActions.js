@@ -59,5 +59,29 @@ export const deleteVillager = id => dispatch => {
     })
     .catch( err => {
       console.log(err)
+      dispatch({ type: FAILED_FETCH, payload: err })
     })
+}
+
+export const EDIT_VILLAGER = 'EDIT_VILLAGER'
+
+export const editVillager = (villager, id) => dispatch => {
+  Axios.put(`http://localhost:3333/smurfs/${id}`, villager)
+    .then( res => {
+      console.log(res)
+      dispatch({ type: FETCHED_VILLAGERS, payload: res.data })
+    })
+    .catch( err => {
+      console.log(err)
+      dispatch({ type: FAILED_FETCH, payload: err })
+    })
+}
+
+export const SET_FORM_TYPE = 'SET_FORM_TYPE'
+
+export const setForm = type => {
+  return {
+    type: SET_FORM_TYPE,
+    payload: type
+  }
 }

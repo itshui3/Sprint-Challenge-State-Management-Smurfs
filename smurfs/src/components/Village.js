@@ -2,7 +2,7 @@
 import React from 'react'
 // Redux
 import { connect } from 'react-redux'
-import { fetchVillagers, openPost } from '../redux/actions'
+import { fetchVillagers, openPost, setForm } from '../redux/actions'
 // Styling
 import { Button, Jumbotron } from 'reactstrap'
 import './Village.scss'
@@ -18,6 +18,7 @@ function Village(props) {
   }
   const togglePostForm = ev => {
     props.openPost()
+    props.setForm('make')
   }
 
   return (
@@ -63,5 +64,6 @@ const mapStateToProps = ({ villageReducer }) => {
 
 export default connect(mapStateToProps, {
   fetchVillagers: fetchVillagers,
-  openPost: openPost
+  openPost: openPost,
+  setForm: setForm
 })(Village)

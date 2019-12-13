@@ -9,7 +9,11 @@ import {
   OPEN_POST,
   openPost,
   deleteVillager,
-  DELETE_VILLAGER
+  DELETE_VILLAGER,
+  EDIT_VILLAGER,
+  editVillager,
+  SET_FORM_TYPE,
+  setForm
 } from './fetchActions'
 
 export {
@@ -23,5 +27,9 @@ export {
   OPEN_POST,
   openPost,
   deleteVillager,
-  DELETE_VILLAGER
+  DELETE_VILLAGER,
+  EDIT_VILLAGER,
+  editVillager,
+  SET_FORM_TYPE,
+  setForm
 }

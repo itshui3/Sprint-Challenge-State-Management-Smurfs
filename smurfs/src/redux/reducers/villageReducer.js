@@ -4,7 +4,8 @@ import {
   FAILED_FETCH,
   SET_VILLAGER,
   OPEN_POST,
-  DELETE_VILLAGER
+  DELETE_VILLAGER,
+  SET_FORM_TYPE
 } from '../actions'
 
 const initialState = {
@@ -12,7 +13,8 @@ const initialState = {
   isFetching: false,
   error: false,
   isSetting: false,
-  isPostOpen: false
+  isPostOpen: false,
+  formType: ''
 }
 
 export const villageReducer = (state = initialState, { type, payload }) => {
@@ -55,6 +57,11 @@ export const villageReducer = (state = initialState, { type, payload }) => {
     case DELETE_VILLAGER:
       return {
         ...state
+      }
+    case SET_FORM_TYPE:
+      return {
+        ...state,
+        formType: payload
       }
 
     default:
