@@ -15,15 +15,15 @@ function Form(props) {
   })
 
   // this useEffect is resetting my  values before the post occurs
-  // useEffect(() => {
+  useEffect(() => {
 
-  //   setVillager({
-  //     name: '',
-  //     age: '',
-  //     height: ''
-  //   })
+    setVillager({
+      name: '',
+      age: '',
+      height: ''
+    })
 
-  // }, [props.isPostOpen])
+  }, [props.villagers])
 
   const closeModal = ev => {
     props.openPost()
@@ -33,8 +33,11 @@ function Form(props) {
   }
   const handleSubmit = ev => {
     ev.preventDefault()
-
-    props.postVillager(villager)
+    if (villager.name && villager.age && villager.height) {
+      props.postVillager(villager)
+    } else {
+      alert('error, fill out all the fields')
+    }
 
 
   }
@@ -83,7 +86,8 @@ function Form(props) {
 const mapStateToProps = ({ villageReducer }) => {
 
   return {
-    isPostOpen: villageReducer.isPostOpen
+    isPostOpen: villageReducer.isPostOpen,
+    villagers: villageReducer.villagers
   }
 }
 
