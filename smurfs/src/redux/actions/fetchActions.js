@@ -37,11 +37,10 @@ export const openPost = () => {
 
 export const postVillager = villager => dispatch => {
   dispatch({ type: SET_VILLAGER })
-
+  console.log(villager, 'villager being posted')
   Axios.post('http://localhost:3333/smurfs', villager)
     .then( res => {
       console.log(res)
-      dispatch({ type: POSTED_VILLAGER })
       dispatch({ type: FETCHED_VILLAGERS, payload: res.data })
     })
     .catch( err => {
