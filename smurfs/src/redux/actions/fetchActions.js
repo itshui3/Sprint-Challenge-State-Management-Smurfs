@@ -55,6 +55,7 @@ export const deleteVillager = id => dispatch => {
   Axios.delete(`http://localhost:3333/smurfs/${id}`)
     .then( res => {
       console.log(res)
+      dispatch({ type: FETCHED_VILLAGERS, payload: res.data })
     })
     .catch( err => {
       console.log(err)
