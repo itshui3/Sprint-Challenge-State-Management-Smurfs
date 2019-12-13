@@ -3,7 +3,11 @@ import {
   FETCHED_VILLAGERS,
   FAILED_FETCH,
   SET_VILLAGER,
-  fetchVillagers
+  fetchVillagers,
+  postVillager,
+  POSTED_VILLAGER,
+  OPEN_POST,
+  openPost
 } from './fetchActions'
 
 export {
@@ -11,5 +15,9 @@ export {
   FETCHED_VILLAGERS,
   FAILED_FETCH,
   SET_VILLAGER,
-  fetchVillagers
+  fetchVillagers,
+  postVillager,
+  POSTED_VILLAGER,
+  OPEN_POST,
+  openPost
 }

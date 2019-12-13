@@ -2,12 +2,13 @@
 import React from 'react'
 // Redux
 import { connect } from 'react-redux'
-import { fetchVillagers } from '../redux/actions'
+import { fetchVillagers, openPost } from '../redux/actions'
 // Styling
 import { Button, Jumbotron } from 'reactstrap'
 import './Village.scss'
 // Components
 import Villager from './Villager'
+import Form from './Form'
 
 function Village(props) {
 
@@ -15,13 +16,25 @@ function Village(props) {
     console.log('user clicked fetch btn')
     props.fetchVillagers()
   }
+  const togglePostForm = ev => {
+    props.openPost()
+  }
 
   return (
     <div className="village__cont">
+      <div className="villageBtns__cont">
       <Button 
         className="village__fetchBtn"
         onClick={handleFetchClick}
       >Fetch Some Villagers!</Button>
+      <Button 
+        className="village__postBtn"
+        onClick={togglePostForm}
+        color="success"
+      >Create some Villagers!</Button>
+
+      </div>
+
       <Jumbotron className="villagers__cont">
         {
           props.villagers && props.villagers.map((villager, index) => (
@@ -33,6 +46,8 @@ function Village(props) {
           ))
         }
       </Jumbotron>
+
+      <Form />
     </div>
 
   )
@@ -47,5 +62,6 @@ const mapStateToProps = ({ villageReducer }) => {
 }
 
 export default connect(mapStateToProps, {
-  fetchVillagers: fetchVillagers
+  fetchVillagers: fetchVillagers,
+  openPost: openPost
 })(Village)

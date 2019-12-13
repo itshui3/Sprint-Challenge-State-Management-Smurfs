@@ -2,13 +2,16 @@ import {
   FETCHING_VILLAGERS,
   FETCHED_VILLAGERS,
   FAILED_FETCH,
-  SET_VILLAGER
+  SET_VILLAGER,
+  OPEN_POST
 } from '../actions'
 
 const initialState = {
   villagers: [],
   isFetching: false,
-  error: false
+  error: false,
+  isSetting: false,
+  isPostOpen: false
 }
 
 export const villageReducer = (state = initialState, { type, payload }) => {
@@ -19,6 +22,18 @@ export const villageReducer = (state = initialState, { type, payload }) => {
         ...state,
         isFetching: true,
         error: false
+      }
+
+    case SET_VILLAGER:
+      return {
+        ...state,
+        isSetting: true,
+        error: false
+      }
+    case OPEN_POST:
+      return {
+        ...state,
+        isPostOpen: !state.isPostOpen
       }
 
     case FETCHED_VILLAGERS:
@@ -34,7 +49,7 @@ export const villageReducer = (state = initialState, { type, payload }) => {
         isFetching: false,
         error: payload
       }
-    case SET_VILLAGER:
+
     default:
       return state
   }
