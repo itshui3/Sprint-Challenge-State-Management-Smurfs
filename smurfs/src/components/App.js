@@ -7,7 +7,9 @@ class App extends Component {
     return (
       <div className="App">
         <Route path="/" render={props => (
-          <h1 onClick={() => props.history.push('/village')}>SMURFS! 2.0 W/ Redux</h1>
+          <div className="App-header">
+          <h1 className="App-title" onClick={() => props.history.push('/village')}>SMURFS! 2.0 W/ Redux</h1>
+          </div>
           )} />
         <Route path="/village" component={Village} />
       </div>
