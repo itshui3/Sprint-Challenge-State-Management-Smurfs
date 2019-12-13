@@ -3,7 +3,8 @@ import {
   FETCHED_VILLAGERS,
   FAILED_FETCH,
   SET_VILLAGER,
-  OPEN_POST
+  OPEN_POST,
+  DELETE_VILLAGER
 } from '../actions'
 
 const initialState = {
@@ -21,7 +22,8 @@ export const villageReducer = (state = initialState, { type, payload }) => {
       return {
         ...state,
         isFetching: true,
-        error: false
+        error: false,
+        isSetting: false
       }
 
     case SET_VILLAGER:
@@ -48,6 +50,11 @@ export const villageReducer = (state = initialState, { type, payload }) => {
         ...state,
         isFetching: false,
         error: payload
+      }
+
+    case DELETE_VILLAGER:
+      return {
+        ...state
       }
 
     default:

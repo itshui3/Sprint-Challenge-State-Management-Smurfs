@@ -48,3 +48,15 @@ export const postVillager = villager => dispatch => {
       dispatch({ type: FAILED_FETCH, payload: err })
     })
 }
+
+export const DELETE_VILLAGER = 'DELETE_VILLAGER'
+
+export const deleteVillager = id => dispatch => {
+  Axios.delete(`http://localhost:3333/smurfs/${id}`)
+    .then( res => {
+      console.log(res)
+    })
+    .catch( err => {
+      console.log(err)
+    })
+}

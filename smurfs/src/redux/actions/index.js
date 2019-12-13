@@ -7,7 +7,9 @@ import {
   postVillager,
   POSTED_VILLAGER,
   OPEN_POST,
-  openPost
+  openPost,
+  deleteVillager,
+  DELETE_VILLAGER
 } from './fetchActions'
 
 export {
@@ -19,5 +21,7 @@ export {
   postVillager,
   POSTED_VILLAGER,
   OPEN_POST,
-  openPost
+  openPost,
+  deleteVillager,
+  DELETE_VILLAGER
 }
