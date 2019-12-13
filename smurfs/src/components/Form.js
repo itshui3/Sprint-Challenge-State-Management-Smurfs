@@ -44,8 +44,6 @@ function Form(props) {
     } else if (props.formType) {
       props.editVillager(villager, props.formType)
     }
-
-
   }
 
   return (
